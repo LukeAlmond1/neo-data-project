@@ -20,3 +20,7 @@ php artisan queue:work
 For authentication, I'm using Laravel's latest authentication features, which provide a robust and flexible authentication system. The frontend components for authentication are provided out of the box by Laravel’s new auth system.
 
 The only custom component I’ve built is the `Dashboard.tsx` component. The rest of the frontend UI components come from Laravel’s built-in authentication system and associated frontend packages.
+
+You can also login with this demo user
+`username:` test@system.com
+`password:` password
