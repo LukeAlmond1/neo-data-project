@@ -28,4 +28,4 @@ You can also login with this demo user, ensure you have ran `php artisan db:seed
 ## Quick Demo
 Check out the demo below to see the application in action:
 
-[Watch Demo](demo.mp4)
+[Watch Demo](demo.mov)
