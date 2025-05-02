@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Commands;
 
-use App\Collections\NeoDataAnalysisCollection;
+use App\Contracts\NeoDataAnalysisCollectionInterface;
 use App\Models\NeoDataAnalysis;
 use App\Models\NeoObject;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -47,7 +47,7 @@ class ImportNeoDailyCommandJobTest extends TestCase
         $this->assertDatabaseCount('neo_data_analyses', 1);
 
         $analysis = NeoDataAnalysis::first();
-        $collection = NeoDataAnalysisCollection::make([$neo]);
+        $collection = app(NeoDataAnalysisCollectionInterface::class)::make([$neo]);
 
         $this->assertEquals($collection->totalNeoCount(), $analysis->total_neo_count);
         $this->assertEquals($collection->avgEstimatedDiameterMin(), $analysis->avg_estimated_diameter_min);

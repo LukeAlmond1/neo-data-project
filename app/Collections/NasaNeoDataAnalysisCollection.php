@@ -4,10 +4,11 @@ declare(strict_types=1);
 
 namespace App\Collections;
 
+use App\Contracts\NeoDataAnalysisCollectionInterface;
 use App\Models\NeoObject;
 use Illuminate\Support\Collection;
 
-class NeoDataAnalysisCollection extends Collection
+class NasaNeoDataAnalysisCollection extends Collection implements NeoDataAnalysisCollectionInterface
 {
 
     public function totalNeoCount(): int

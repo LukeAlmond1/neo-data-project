@@ -2,6 +2,7 @@
 
 namespace Tests\Unit\Jobs;
 
+use App\Contracts\NeoDataAnalysisCollectionInterface;
 use App\Jobs\RunDailyNeoAnalysisJob;
 use App\Models\CloseApproachData;
 use App\Models\NeoDataAnalysis;
@@ -40,7 +41,9 @@ class RunDailyNeoAnalysisJobTest extends TestCase
         ]);
 
         $job = new RunDailyNeoAnalysisJob($date);
-        $job->handle();
+        $job->handle(
+            app(NeoDataAnalysisCollectionInterface::class)
+        );
 
         $this->assertDatabaseCount('neo_data_analyses', 1);
 

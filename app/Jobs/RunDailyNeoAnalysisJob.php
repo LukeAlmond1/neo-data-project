@@ -2,8 +2,7 @@
 
 namespace App\Jobs;
 
-use App\Collections\NasaNeoDataCollection;
-use App\Collections\NeoDataAnalysisCollection;
+use App\Contracts\NeoDataAnalysisCollectionInterface;
 use App\Models\NeoDataAnalysis;
 use App\Models\NeoObject;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -21,14 +20,14 @@ class RunDailyNeoAnalysisJob implements ShouldQueue
         public readonly Carbon $date
     ) {}
 
-    public function handle(): void
+    public function handle(NeoDataAnalysisCollectionInterface $analysisCollection): void
     {
         $neoObjects = NeoObject::with('closeApproaches')->whereBetween('created_at', [
             $this->date->copy()->startOfDay(),
             $this->date->copy()->endOfDay(),
         ])->get();
 
-        $collection = new NeoDataAnalysisCollection($neoObjects->all());
+        $collection = $analysisCollection->make($neoObjects->all());
 
 
         $analysis = NeoDataAnalysis::create([

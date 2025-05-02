@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use App\Clients\NasaNeoClient;
+use App\Collections\NasaNeoDataAnalysisCollection;
+use App\Contracts\NeoDataAnalysisCollectionInterface;
 use App\Contracts\NeoReadRepositoryInterface;
 use App\Contracts\NeoWriteRepositoryInterface;
 use App\Repositories\NasaNeoReadRepository;
@@ -17,6 +19,7 @@ class NeoServiceProvider extends ServiceProvider
 
         $this->app->bind(NeoWriteRepositoryInterface::class, NasaNeoWriteRepository::class);
         $this->app->bind(NeoReadRepositoryInterface::class, NasaNeoReadRepository::class);
+        $this->app->bind(NeoDataAnalysisCollectionInterface::class, NasaNeoDataAnalysisCollection::class);
     }
 
     public function boot(): void
