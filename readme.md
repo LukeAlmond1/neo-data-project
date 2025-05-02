@@ -21,6 +21,11 @@ For authentication, I'm using Laravel's latest authentication features, which pr
 
 The only custom component I’ve built is the `Dashboard.tsx` component. The rest of the frontend UI components come from Laravel’s built-in authentication system and associated frontend packages.
 
-You can also login with this demo user
+You can also login with this demo user, ensure you have ran `php artisan db:seed` first
 `username:` test@system.com
 `password:` password
+
+## Quick Demo
+Check out the demo below to see the application in action:
+
+[Watch Demo](demo.mp4)
